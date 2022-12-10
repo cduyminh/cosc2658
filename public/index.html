@@ -2,97 +2,127 @@
 
 <head>
   <title>Pathfinding Visualizer</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <link id="cssTheme" rel="stylesheet" href="styling/cssBasic.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="shortcut icon" type="image/png" href="styling/c_icon.png" />
 </head>
 
 <body>
-  <div id="tutorial">
-    <h3>Welcome to Pathfinding Visualizer!</h3>
-    <h6>This short tutorial will walk you through all of the features of this application.</h6>
-    <p>If you want to dive right in, feel free to press the "Skip Tutorial" button below. Otherwise, press "Next"!</p>
-    <div id="tutorialCounter">1/9</div>
-    <img id="mainTutorialImage" src="styling/c_icon.png">
-    <button id="nextButton" class="btn btn-default navbar-btn" type="button">Next</button>
-    <button id="previousButton" class="btn btn-default navbar-btn" type="button">Previous</button>
-    <button id="skipButton" class="btn btn-default navbar-btn" type="button">Skip Tutorial</button>
+  <div id="tutorial" style="overflow: auto">
+    <div style="display: flex; flex-direction: column; height: 100%; overflow: auto;">
+      <div
+        style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; height: 100%;">
+        <div style="box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.1); width: fit-content; margin:
+      20px; overflow: hidden;">
+          <img class="image" src="https://i.ibb.co/WsCGW4Y/ezgif-com-gif-maker-7.gif" alt="1. Add Wall" border="0"
+            height="200px" width="200px" />
+        </div>
+        <div style="box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.1); width: fit-content; margin:
+      20px; overflow: hidden;">
+          <img class="image" src="https://i.ibb.co/vVyhTpZ/ezgif-com-gif-maker-8.gif" alt="2. Visualize !" border="0"
+            height="200px" width="200px" />
+        </div>
+
+      </div>
+      <button style="
+      width: 100%;
+      height: 10%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    " id="skipButton" class="btn btn-default navbar-btn" type="button">
+        Start
+      </button>
+    </div>
+
+    <div id="tutorialCounter"></div>
+    <div id=" nextButton"></div>
+    <div id="previousButton"></div>
+
   </div>
-  <div id="antify" style="border-radius: 5px;">
-    <div id='navbarDiv' style="margin: 0; border-radius: 5px;">
-      <nav class="navbar navbar-inverse" style="margin: 0; border-radius: 5px 5px 0px 0px;">
+  <div id="antify" style="border-radius: 5px">
+    <div id="navbarDiv" style="margin: 0; border-radius: 5px">
+      <nav class="navbar navbar-inverse" style="margin: 0; border-radius: 5px 5px 0px 0px">
         <div class="container-fluid">
           <div class="navbar-header">
             <a id="refreshButton" class="navbar-brand" href="#"
-              style="height: 0px; width:0px;padding:0;margin:0;display: none;"></a>
+              style="height: 0px; width: 0px; padding: 0; margin: 0; display: none"></a>
           </div>
-          <ul class="nav navbar-nav"
-            style="display:flex;flex-direction:row;justify-content:space-between;width:100%;align-items: center;">
-
-            <li class="dropdown">
-              <i class="fa fa-gear" style="font-size:36px;color:white;opacity:0.3"></i>
-            </li>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mazes &amp; Patterns
-                <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li id='startButtonCreateMazeTwo'><a href="#">Recursive Division</a></li>
-                <li id='startButtonCreateMazeThree'><a href="#">Recursive Division (vertical skew)</a></li>
-                <li id='startButtonCreateMazeFour'><a href="#">Recursive Division (horizontal skew)</a></li>
-                <li id='startButtonCreateMazeOne'><a href="#">Basic Random Maze</a></li>
-                <li id='startButtonCreateMazeWeights'><a href="#">Basic Weight Maze</a></li>
-                <li id='startStairDemonstration'><a href="#">Simple Stair Pattern</a></li>
+          <nav class="navbar navbar-inverse" style="margin: 0">
+            <div class="container-fluid">
+              <ul class="nav navbar-nav"
+                style="display: flex; flex-direction: row; justify-content: center; width: 100%">
+                <li class="dropdown" style="
+											padding: 0xp 15px;
+											height: 41px;
+											margin: 10px 15px;
+											display: flex;
+											flex-direction: column;
+											align-items: center;
+											border-radius: 5px;
+										">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="
+												padding: 10px 15px;
+												height: 100%;
+												text-align: center;
+												display: flex;
+												flex-direction: row;
+												align-items: center;
+												border-radius: 5px;
+											" id="startButtonSetting">
+                    <i class="fa fa-sliders" style="font-size: 36px; color: white; opacity: 1" aria-hidden="true"></i>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <b>Algorithms</b>
+                    <li style="width: 100%" id="startButtonDijkstra">
+                      <a href="#">Dijkstra's Algorithm</a>
+                    </li>
+                    <li style="width: 100%" id="startButtonAStar2"><a href="#">A* Search</a></li>
+                    <li style="width: 100%" id="startButtonGreedy">
+                      <a href="#">Greedy Best-first Search</a>
+                    </li>
+                    <li style="width: 100%" id="startButtonAStar">
+                      <a href="#">Swarm Algorithm</a>
+                    </li>
+                    <li style="width: 100%" id="startButtonAStar3">
+                      <a href="#">Convergent Swarm Algorithm</a>
+                    </li>
+                    <li style="width: 100%" id="startButtonBidirectional">
+                      <a href="#">Bidirectional Swarm Algorithm</a>
+                    </li>
+                    <li style="width: 100%" id="startButtonBFS">
+                      <a href="#">Breadth-first Search</a>
+                    </li>
+                    <li style="width: 100%" id="startButtonDFS">
+                      <a href="#">Depth-first Search</a>
+                    </li>
+                  </ul>
+                </li>
+                <li id="startButtonStart" style="display: flex; flex-direction: row; align-items: center">
+                  <button id="actualStartButton" class="btn btn-default navbar-btn" type="button">
+                    Default (Greedy)
+                  </button>
+                </li>
+                <li id="startButtonClearPath">
+                  <a href="#">
+                    <i class="fa fa-refresh" style="font-size: 36px; color: white; opacity: 1" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li id="startButtonClearBoard">
+                  <a href="#">
+                    <i class="fa fa-remove" style="font-size: 36px; color: white; opacity: 1" aria-hidden="true"></i>
+                  </a>
+                </li>
               </ul>
-            </li>
-            <li class="dropdown">
-              <a id="adjustSpeed" class="dropdown-toggle" data-toggle="dropdown" href="#">Speed: Fast
-                <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li id='adjustFast'><a href="#">Fast</a></li>
-                <li id='adjustAverage'><a href="#">Average</a></li>
-                <li id='adjustSlow'><a href="#">Slow</a></li>
-              </ul>
-            </li>
-            <li id='startButtonAddObject'><a href="#">Add Bomb</a></li>
-            <li id='startButtonClearBoard'><a href="#">Clear Board</a></li>
-            <li id='startButtonClearWalls'><a href="#">Clear Walls &amp; Weights</a></li>
-            <li id='startButtonClearPath'><a href="#">Clear Path</a></li>
-            <li class="dropdown">
-              <i class="fa fa-gear" style="font-size:36px;color:white;opacity:0.3"></i>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      <nav class="navbar navbar-inverse" style="margin: 0">
-        <div class="container-fluid">
-
-          <ul class="nav navbar-nav" style="display:flex;flex-direction:row;justify-content:center;width:100%">
-            <li id='startButtonStart' style="display: flex;flex-direction: row;align-items: center;"><button
-                id="actualStartButton" class="btn btn-default navbar-btn" type="button">Visualize!</button></li>
-            <li class="dropdown"
-              style="border: 1px solid #ccc; padding: 0xp 15px;height: 41px; margin: 10px 15px; display: flex; flex-direction: column; align-items: center; border-radius: 5px;">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#"
-                style="padding: 10px 15px; height: 100%; text-align: center; display: flex; flex-direction: row; align-items: center; border-radius: 5px;">Algorithms
-                <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li style="width: 100%" id='startButtonDijkstra'><a href="#">Dijkstra's Algorithm</a></li>
-                <li style="width: 100%" id='startButtonAStar2'><a href="#">A* Search</a></li>
-                <li style="width: 100%" id='startButtonGreedy'><a href="#">Greedy Best-first Search</a></li>
-                <li style="width: 100%" id='startButtonAStar'><a href="#">Swarm Algorithm</a></li>
-                <li style="width: 100%" id='startButtonAStar3'><a href="#">Convergent Swarm Algorithm</a></li>
-                <li style="width: 100%" id='startButtonBidirectional'><a href="#">Bidirectional Swarm Algorithm</a></li>
-                <li style="width: 100%" id='startButtonBFS'><a href="#">Breadth-first Search</a></li>
-                <li style="width: 100%" id='startButtonDFS'><a href="#">Depth-first Search</a></li>
-              </ul>
-            </li>
-
-          </ul>
+            </div>
+          </nav>
         </div>
       </nav>
     </div>
-    <div id='mainGrid'>
-      <div id='mainText' style="height: 0px; padding: 0">
+    <div id="mainGrid">
+      <div id="mainText" style="height: 0px; padding: 0">
         <!-- <ul>
           <li>
             <div class="start"></div>Start Node
@@ -122,13 +152,13 @@
         </ul> -->
       </div>
       <div id="algorithmDescriptor" style="height: 0px; padding: 0"></div>
-      <table id='board' />
+      <table id="board" />
     </div>
   </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src='browser/bundle.js'></script>
+<script src="browser/bundle.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.11.1/sass.min.js"></script>
 
 </html>

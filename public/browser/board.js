@@ -966,11 +966,11 @@ Board.prototype.toggleButtons = function() {
     }
 
     document.getElementById("startButtonClearWalls").onclick = () => {
-      this.clearWalls();
+      // this.clearWalls();
     }
 
     document.getElementById("startButtonClearPath").onclick = () => {
-      this.clearPath("clickedButton");
+      // this.clearPath("clickedButton");
     }
 
     document.getElementById("startButtonCreateMazeThree").onclick = () => {
